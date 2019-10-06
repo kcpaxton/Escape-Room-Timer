@@ -16,3 +16,5 @@ C:\Users\kylep\source\repos\EscapeRoomTimer\EscapeRoomTimer\obj\Debug\EscapeRoom
 C:\Users\kylep\source\repos\EscapeRoomTimer\EscapeRoomTimer\bin\Debug\WpfAnimatedGif.dll
 C:\Users\kylep\source\repos\EscapeRoomTimer\EscapeRoomTimer\bin\Debug\WpfAnimatedGif.xml
 C:\Users\kylep\source\repos\EscapeRoomTimer\EscapeRoomTimer\obj\Debug\EscapeRoomTimer.csproj.CopyComplete
+C:\Users\kylep\source\repos\EscapeRoomTimer\EscapeRoomTimer\obj\Debug\App.baml
+C:\Users\kylep\source\repos\EscapeRoomTimer\EscapeRoomTimer\obj\Debug\Styles.baml

@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace EscapeRoomTimer
 {
@@ -21,16 +22,47 @@ namespace EscapeRoomTimer
     /// </summary>
     public partial class MainWindow : Window
     {
+        DispatcherTimer _timer;
+        TimeSpan _time;
         public MainWindow()
         {
             InitializeComponent();
+            
+            Timer.Visibility = Visibility.Hidden;
+            image.Visibility = Visibility.Hidden;
+            Pulse.Visibility = Visibility.Hidden;
+
+
+
 
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DoubleAnimation doubleAnimation = new DoubleAnimation(0,1,new Duration(TimeSpan.FromSeconds(20)));
-            Pulse.BeginAnimation(OpacityProperty, doubleAnimation);
+            
+        }
+
+        private void StartBtn_Click(object sender, RoutedEventArgs e)
+        {
+            StartBtn.Visibility = Visibility.Hidden;
+            Timer.Visibility = Visibility.Visible;
+            image.Visibility = Visibility.Visible;
+            Pulse.Visibility = Visibility.Visible;
+
+            Storyboard sb = this.FindResource("Storyboard1") as Storyboard;
+            
+
+            _time = TimeSpan.FromHours(1);
+            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                Timer.Text = _time.ToString("c");
+
+                if (_time == TimeSpan.Zero) _timer.Stop();
+                _time = _time.Add(TimeSpan.FromSeconds(-1));
+            }, Application.Current.Dispatcher);
+            _timer.Start();
+            sb.Begin();
         }
     }
+
 }
